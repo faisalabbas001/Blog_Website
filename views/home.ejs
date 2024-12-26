@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>  
+        <%- include("./partails/head") %>  
+        <title>Bootstrap Demo</title>  
+    </head> 
+<body>
+    <%- include("./partails/nav") %>  
+
+
+    <div class="row">  
+        <% blog.forEach(element => { %>  
+            <div class="col-md-4" id="blog-<%= element._id %>"> <!-- Unique ID for each blog --> 
+                <div class="card">  
+                    <img src="<%= element.coverImageURL %>" class="card-img-top" alt="Cover image for <%= element.title %>">  
+                    <div class="card-body">  
+                        <h5 class="card-title"><%= element.title %></h5>  
+                        <p class="card-text"><%= element.body %></p>  
+                        <a href="/addBlog/<%= element._id %>" class="btn btn-primary">Read Blogs</a>  
+                        <!-- Replace 'a' with 'button' for Delete --> 
+                        <button class="btn btn-danger" onclick="deleteBlog('<%= element._id %>')">Delete Blog</button>  
+                    </div>  
+                </div>  
+            </div>  
+        <% }) %>  
+    </div>
+    <%- include("./partails/script") %> 
+    
+</body>
+</html>
